@@ -151,9 +151,9 @@ export const Aptos = () => {
 
         <div className="relative z-10 w-full mx-auto">
           <img
-            className="w-[70%] m-auto"
-            src="/img/aptos_walnet.png"
-            alt="Aptos Wallet"
+            className="w-[90%] m-auto my-4"
+            src="/img/move_walmove.png"
+            alt="Move Wallet"
           />
         </div>
 

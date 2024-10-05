@@ -34,7 +34,7 @@ export default function NFT({ data, ...props }) {
         {/* <div className="relative">
           <img src="/img/wallpaper/dark/img0.jpg" alt="NFT" className="w-full h-40 object-cover" />
           <div className="absolute top-2 left-2 bg-white/10 backdrop-blur-sm rounded-full px-2 py-1 flex items-center space-x-1">
-            <img src="/img/icon/collection.png" alt="Aptos" className="w-4 h-4" />
+            <img src="/img/icon/collection.png" alt="Move" className="w-4 h-4" />
             <span className="text-white text-xs">My Collection</span>
           </div>
         </div>
@@ -82,7 +82,7 @@ export default function NFT({ data, ...props }) {
           className="w-full h-40 object-cover bg-[url(/img/nft_placeholder.png)] bg-cover"
         />
         <div className="absolute top-2 left-2 bg-white/10 backdrop-blur-sm rounded-full px-2 py-1 flex items-center space-x-1">
-          <img src="/img/icon/collection.png" alt="Aptos" className="w-4 h-4" />
+          <img src="/img/icon/collection.png" alt="Move" className="w-4 h-4" />
           <span className="text-white text-xs">My Collection</span>
         </div>
       </div>

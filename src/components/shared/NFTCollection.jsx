@@ -41,7 +41,7 @@ export default function NFTCollection({ data, ...props }) {
             <img src="/img/wallpaper/dark/img0.jpg" alt="NFT" className="w-full h-40 object-cover" />
           </Lens>
           <div className="absolute top-2 left-2 bg-white/10 backdrop-blur-sm rounded-full px-2 py-1 flex items-center space-x-1 z-20">
-            <img src="/img/icon/collection.png" alt="Aptos" className="w-4 h-4" />
+            <img src="/img/icon/collection.png" alt="Move" className="w-4 h-4" />
             <span className="text-white text-xs">My Collection</span>
           </div>
         </div>
@@ -97,7 +97,7 @@ export default function NFTCollection({ data, ...props }) {
           />
         </Lens>
         <div className="absolute top-2 left-2 bg-white/10 backdrop-blur-sm rounded-full px-2 py-1 flex items-center space-x-1 z-20">
-          <img src="/img/icon/collection.png" alt="Aptos" className="w-4 h-4" />
+          <img src="/img/icon/collection.png" alt="Move" className="w-4 h-4" />
           <span className="text-white text-xs">My Collection</span>
         </div>
       </div>

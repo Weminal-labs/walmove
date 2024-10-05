@@ -19,10 +19,10 @@ export * from "./apps/taskmanager";
 export * from "./apps/terminal";
 export * from "./apps/whiteboard";
 // export * from "./apps/algorand";
-// export * from "./apps/walnet";
+// export * from "./apps/walmove";
 export * from "./apps/aptos";
 export * from "./apps/aptogotchi";
-export * from "./apps/aptos_explorer";
+export * from "./apps/move_explorer";
 export * from "./apps/collection";
 export * from "./apps/aptodigi";
 

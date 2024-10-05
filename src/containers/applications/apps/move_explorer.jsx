@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import { ToolBar } from "../../../utils/general";
 import "./assets/fileexpo.scss";
 
-export const AptosExplorer = () => {
-  const wnapp = useSelector((state) => state.apps.aptos_explorer);
+export const MoveExplorer = () => {
+  const wnapp = useSelector((state) => state.apps.move_explorer);
 
   return (
     <div
@@ -25,8 +25,8 @@ export const AptosExplorer = () => {
         name={wnapp.name}
       />
       <iframe
-        src="https://explorer.aptoslabs.com/?network=testnet"
-        title="Aptos Explorer"
+        src="https://explorer.movementlabs.xyz/?network=testnet"
+        title="Move Explorer"
         width="100%"
         height="100%"
         style={{ border: "none" }}
