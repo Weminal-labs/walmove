@@ -1,5 +1,5 @@
 import icons from "./apps";
-import "../index.css"
+import "../index.css";
 var { taskbar, desktop, pinned, recent } = {
   taskbar:
     (localStorage.getItem("taskbar") &&
@@ -13,35 +13,36 @@ var { taskbar, desktop, pinned, recent } = {
     ],
   desktop: (localStorage.getItem("desktop") &&
     JSON.parse(localStorage.getItem("desktop"))) || [
-      "Browser",
-      // "Move Explorer",
-      "My Collection",
-      "Algorand",
-      "Walmove",
-      "My Wallet",
-      "Aptogotchi",
-      "Aptodigi",
-      "Wecastle",
-      // "Github",
-      // "X",
-    ],
+    "Browser",
+    // "Move Explorer",
+    "My Collection",
+    "Algorand",
+    "Walmove",
+    "My Wallet",
+    "Aptogotchi",
+    "Aptodigi",
+    "Wecastle",
+    "Social Move",
+    // "Github",
+    // "X",
+  ],
   pinned: (localStorage.getItem("pinned") &&
     JSON.parse(localStorage.getItem("pinned"))) || [
-      "X",
-      "Github",
-      "Move Explorer",
-    ],
+    "X",
+    "Github",
+    "Move Explorer",
+  ],
   recent: (localStorage.getItem("recent") &&
     JSON.parse(localStorage.getItem("recent"))) || [
-      // "Mail",
-      // "Twitter",
-      // "Terminal",
-      // "Github",
-      // "File Explorer",
-      // "Spotify",
-      // "Edge",
-      "Move Explorer",
-    ],
+    // "Mail",
+    // "Twitter",
+    // "Terminal",
+    // "Github",
+    // "File Explorer",
+    // "Spotify",
+    // "Edge",
+    "Move Explorer",
+  ],
 };
 
 // if (desktop.includes("Buy me a coffee") === false) {

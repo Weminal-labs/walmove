@@ -362,6 +362,12 @@ const apps = [
     type: "app",
     action: "WECASTLE",
   },
+  {
+    name: "Social Move",
+    icon: "socialmove",
+    type: "app",
+    action: "SOCIALMOVE",
+  },
   // {
   //   name: "Dorahacks",
   //   icon: "dorahacks",
@@ -376,7 +382,6 @@ const apps = [
   //   action: "EXTERNAL",
   //   payload: "https://www.aptosnames.com/",
   // },
-
 ];
 
 for (let i = 0; i < installed.length; i++) {

@@ -27,10 +27,14 @@ const BlurCard = ({ account, hideAddress, metadata }) => {
 
   return (
     <div className="bg-white bg-opacity-[0.01] backdrop-filter backdrop-blur-3xl rounded-xl shadow-2xl p-6 max-w-sm mx-auto">
-      <h2 className="text-xl font-semibold text-neutral-800 dark:text-gray-200 mb-4">Main Account</h2>
+      <h2 className="text-xl font-semibold text-neutral-800 dark:text-gray-200 mb-4">
+        Main Account
+      </h2>
       <div className="flex flex-row justify-between border-b border-gray-300 border-opacity-30 pb-2 mb-4">
-        <p className="text-sm text-neutral-800 dark:text-gray-400 font-medium">BALANCE</p>
-        <p className="text-sm text-neutral-800 drak:text-gray-400 font-medium">
+        <p className="text-sm text-neutral-800 dark:text-gray-400 font-medium">
+          BALANCE
+        </p>
+        <p className="text-sm text-neutral-800 dark:text-gray-400 font-medium">
           {Number(metadata?.balance)} MOVE
         </p>
       </div>
@@ -45,7 +49,9 @@ const BlurCard = ({ account, hideAddress, metadata }) => {
         </div>
         <div>
           {copied ? (
-            <p className="text-blue-400 text-sm hover:text-blue-300 transition-colors">Copied!!</p>
+            <p className="text-blue-400 text-sm hover:text-blue-300 transition-colors">
+              Copied!!
+            </p>
           ) : (
             <button
               onClick={() => copy(account?.address)}
@@ -62,7 +68,7 @@ const BlurCard = ({ account, hideAddress, metadata }) => {
 
 export const Aptos = () => {
   const wnapp = useSelector((state) => state.apps.wallet);
-  const theme = useSelector(state => state.setting.person.theme);
+  const theme = useSelector((state) => state.setting.person.theme);
   const dispatch = useDispatch();
   const { account, metadata, refreshBalance } = useAccount();
 
@@ -153,7 +159,11 @@ export const Aptos = () => {
         <div className="relative z-10 w-full mx-auto">
           <img
             className="w-[90%] m-auto my-4"
-            src={theme === "light" ? "/img/move_walmove_white_bg.png" : "/img/move_walmove.png"}
+            src={
+              theme === "light"
+                ? "/img/move_walmove_white_bg.png"
+                : "/img/move_walmove.png"
+            }
             alt="Move Wallet"
           />
         </div>
@@ -167,7 +177,9 @@ export const Aptos = () => {
         </div>
 
         <div className="my-4 w-full">
-          <h1 className="text-2xl font-bold dark:text-white text-neutral-800 mb-4">My collections</h1>
+          <h1 className="text-2xl font-bold dark:text-white text-neutral-800 mb-4">
+            My collections
+          </h1>
           <div className="space-y-4">
             {tokens && tokens.length > 0 ? (
               <>
