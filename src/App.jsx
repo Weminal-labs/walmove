@@ -89,7 +89,7 @@ function App() {
     var actionType = "";
     try {
       actionType = event.target.dataset.action || "";
-    } catch (err) {}
+    } catch (err) { }
 
     var actionType0 = getComputedStyle(event.target).getPropertyValue(
       "--prefix"
@@ -129,6 +129,8 @@ function App() {
   window.onload = (e) => {
     dispatch({ type: "WALLBOOTED" });
   };
+
+  console.log("Account:", account);
 
   React.useEffect(() => {
     if (!window.onstart) {

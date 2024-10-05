@@ -3,10 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import Battery from "../../components/shared/Battery";
 import { Icon, Image } from "../../utils/general";
 import "./back.scss";
-import { Aptos, AptosConfig, Network, Account } from "@aptos-labs/ts-sdk";
-import { useWallet } from "@aptos-labs/wallet-adapter-react";
-import { WalletSelector as AntdWalletSelector } from "@aptos-labs/wallet-adapter-ant-design";
-import { WalletSelector } from "../../components/shared/WalletSelector";
+import { AptosConnectButton, ErrorCode } from "@razorlabs/wallet-kit";
+
+import "@razorlabs/wallet-kit/style.css";
 
 // Import hooks
 import { useAccount } from "../../hooks/useAccount";
@@ -74,15 +73,15 @@ export const BootScreen = (props) => {
 };
 
 export const LockScreen = (props) => {
+  const dispatch = useDispatch();
+
   const wall = useSelector((state) => state.wallpaper);
   const [lock, setLock] = useState(false);
   const [unlocked, setUnLock] = useState(false);
   const [password, setPass] = useState("");
   const [passType, setType] = useState(1);
   const [forgot, setForget] = useState(false);
-  const dispatch = useDispatch();
-  const { account } = useWallet();
-  const { handleLogin } = useAccount();
+  const { account, handleLogin } = useAccount();
 
   const userName = useSelector((state) => state.setting.person.name);
 
@@ -133,9 +132,6 @@ export const LockScreen = (props) => {
       data-action="splash"
       data-blur={lock}
     >
-      <div className="hidden">
-        <WalletSelector />
-      </div>
       <div className="splashScreen mt-40" data-faded={lock}>
         <div className="text-6xl font-semibold text-gray-100">
           {new Date().toLocaleTimeString("en-US", {
@@ -166,14 +162,39 @@ export const LockScreen = (props) => {
           Sign in
         </div> */}
         <div>
-          <button
+          {/* <button
             className="flex items-center mt-6 signInBtn cursor-pointer"
             onClick={() => {
               handleLogin();
             }}
           >
             Sign in
-          </button>
+          </button> */}
+          <AptosConnectButton
+            className="flex justify-center mt-6 signInBtn cursor-pointer !w-fit"
+            style={{ marginTop: "16px" }}
+            onConnectSuccess={(name) => {
+              console.log("connect success: ", name);
+            }}
+            onConnectError={(err) => {
+              //@ts-ignore
+              if (err.code === ErrorCode.WALLET__CONNECT_ERROR__USER_REJECTED) {
+                console.warn(
+                  "user rejected the connection to " + err.details?.wallet
+                );
+              } else {
+                console.warn("unknown connect error: ", err);
+              }
+            }}
+            onDisconnectSuccess={(name) => {
+              console.log("disconnect success: ", name);
+            }}
+            onDisconnectError={(err) => {
+              console.log("disconnect error: ", err);
+            }}
+          >
+            Sign in
+          </AptosConnectButton>
         </div>
 
         {/*   <input type={passType?"text":"password"} value={password} onChange={action}

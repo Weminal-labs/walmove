@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { useWallet } from "@aptos-labs/wallet-adapter-react";
+import { useAptosWallet, useAptosAccountBalance } from "@razorlabs/wallet-kit";
 
 // Import redux actions
 import { storeAccount, storeAccountBalance, removeAccount } from "../actions";
@@ -9,7 +9,8 @@ import { aptosClient } from "../utils/aptos_client";
 import React from "react";
 
 export function useAccount() {
-  const { account } = useWallet();
+  const { account } = useAptosWallet();
+  const { balance } = useAptosAccountBalance();
   const metadata = useSelector((state) => state.account);
 
   const signout = function () {
@@ -72,13 +73,16 @@ export function useAccount() {
     return resource;
   };
 
-  const refreshBalance = async function () {
+  const refreshBalance = function () {
     getBalance().then((resource) => {
-      console.log("Resource:", resource);
       const value = parseInt(resource.coin.value) / 1e8;
       storeAccountBalance(value);
     });
   };
+
+  React.useEffect(() => {
+    if (balance) storeAccountBalance(Number(balance) / 1e8);
+  }, [balance]);
 
   return {
     account,
