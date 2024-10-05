@@ -1,6 +1,5 @@
 import React from "react";
 import Confetti from "react-confetti";
-import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { useAptosWallet } from "@razorlabs/wallet-kit";
 
 // Import components

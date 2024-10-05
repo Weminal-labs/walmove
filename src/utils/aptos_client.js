@@ -5,7 +5,8 @@ import { NETWORK } from "./constants";
 const aptos = new Aptos(
   new AptosConfig({
     network: Network.CUSTOM,
-    fullnode: "https://faucet.testnet.suzuka.movementlabs.xyz/v1",
+    indexer: "https://indexer.testnet.suzuka.movementlabs.xyz/v1/graphql",
+    fullnode: "https://testnet.suzuka.movementnetwork.xyz/v1",
     faucet: "https://faucet.testnet.suzuka.movementlabs.xyz/",
   })
 );

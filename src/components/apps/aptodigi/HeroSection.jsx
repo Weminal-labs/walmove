@@ -19,9 +19,6 @@ export function HeroSection() {
 
   const { collection } = data ?? {};
 
-  console.log("Aptodigi Collection:", collection);
-  console.log("Aptodigi Data:", data);
-
   return (
     <section className="hero-container flex flex-col md:flex-row gap-[60px] w-full">
       <Image
