@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { ToolBar } from "../../../utils/general";
 import "./assets/fileexpo.scss";
-import { useWallet } from "@aptos-labs/wallet-adapter-react";
 
 // Import components
 import AptodigiMint from "../../../components/apps/aptodigi/Min";

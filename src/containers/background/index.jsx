@@ -3,9 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Battery from "../../components/shared/Battery";
 import { Icon, Image } from "../../utils/general";
 import "./back.scss";
-import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { AptosConnectButton, ErrorCode } from "@razorlabs/wallet-kit";
-import { WalletSelector } from "../../components/shared/WalletSelector";
 
 import "@razorlabs/wallet-kit/style.css";
 
@@ -134,9 +132,6 @@ export const LockScreen = (props) => {
       data-action="splash"
       data-blur={lock}
     >
-      <div className="hidden">
-        <WalletSelector />
-      </div>
       <div className="splashScreen mt-40" data-faded={lock}>
         <div className="text-6xl font-semibold text-gray-100">
           {new Date().toLocaleTimeString("en-US", {
@@ -176,7 +171,7 @@ export const LockScreen = (props) => {
             Sign in
           </button> */}
           <AptosConnectButton
-            className="flex items-center mt-6 signInBtn cursor-pointer"
+            className="flex justify-center mt-6 signInBtn cursor-pointer !w-fit"
             style={{ marginTop: "16px" }}
             onConnectSuccess={(name) => {
               console.log("connect success: ", name);

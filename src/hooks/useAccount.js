@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { useAptosWallet, useAptosAccountBalance } from "@razorlabs/wallet-kit";
 
 // Import redux actions

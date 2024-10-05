@@ -1,5 +1,5 @@
 import React from "react";
-import { useWallet } from "@aptos-labs/wallet-adapter-react";
+import { useAptosWallet } from "@razorlabs/wallet-kit";
 import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 
@@ -20,7 +20,7 @@ import { ABI } from "./utils/abi";
 
 export function StatsSection() {
   const queryClient = useQueryClient();
-  const { signAndSubmitTransaction } = useWallet();
+  const { signAndSubmitTransaction } = useAptosWallet();
 
   const { account, metadata } = useAccount();
   const [nftCount, setNftCount] = useState(1);
@@ -36,7 +36,7 @@ export function StatsSection() {
 
   const getMintNFTConfig = function () {
     return {
-      data: {
+      payload: {
         function: `${ABI.address}::${ABI.name}::mint_nft`,
         typeArguments: [],
         functionArguments: [collection.collection_id, nftCount],
