@@ -350,6 +350,18 @@ const apps = [
     action: "EXTERNAL",
     payload: "https://x.com/Walnet363756",
   },
+  {
+    name: "Aptodigi",
+    icon: "aptodigi",
+    type: "app",
+    action: "APTODIGI",
+  },
+  {
+    name: "Wecastle",
+    icon: "wecastle",
+    type: "app",
+    action: "WECASTLE",
+  },
   // {
   //   name: "Dorahacks",
   //   icon: "dorahacks",
@@ -364,12 +376,7 @@ const apps = [
   //   action: "EXTERNAL",
   //   payload: "https://www.aptosnames.com/",
   // },
-  {
-    name: "Aptodigi",
-    icon: "aptodigi",
-    type: "app",
-    action: "APTODIGI",
-  },
+
 ];
 
 for (let i = 0; i < installed.length; i++) {

@@ -25,6 +25,7 @@ export * from "./apps/aptogotchi";
 export * from "./apps/move_explorer";
 export * from "./apps/collection";
 export * from "./apps/aptodigi";
+export * from "./apps/wecastle";
 
 export const ScreenPreview = () => {
   const tasks = useSelector((state) => state.taskbar);

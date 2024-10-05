@@ -8,9 +8,23 @@ const {
 } = require("tailwindcss/lib/util/flattenColorPalette");
 
 module.exports = {
+  darkMode: 'class',
   content: ["./src/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      colors: {
+        'dark-bg': '#202020',
+      },
+      backgroundColor: {
+        'white-3': 'rgba(255, 255, 255, 0.0333)',
+        'white-5': 'rgba(255, 255, 255, 0.05)',
+        'white-7': 'rgba(255, 255, 255, 0.07)',
+        'white-10': 'rgba(255, 255, 255, 0.1)',
+      },
+      borderColor: {
+        'white-7': 'rgba(238, 236, 235, 0.071)',
+        'white-5': 'rgba(212, 211, 210, 0.051)',
+      },
       animation: {
         spotlight: "spotlight 2s ease .75s 1 forwards",
       },

@@ -27,7 +27,7 @@ const BlurCard = ({ account, hideAddress, metadata }) => {
 
   return (
     <div className="bg-white bg-opacity-[0.01] backdrop-filter backdrop-blur-3xl rounded-xl shadow-2xl p-6 max-w-sm mx-auto">
-      <h2 className="text-xl font-semibold text-gray-200 mb-4">Main Account</h2>
+      <h2 className="text-xl font-semibold text-neutral-800 dark:text-gray-200 mb-4">Main Account</h2>
       <div className="flex flex-row justify-between border-b border-gray-300 border-opacity-30 pb-2 mb-4">
         <p className="text-sm text-gray-400 font-medium">BALANCE</p>
         <p className="text-sm text-gray-400 font-medium">
