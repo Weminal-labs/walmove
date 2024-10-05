@@ -1,13 +1,16 @@
 import React from "react";
 import { useQueryClient } from "@tanstack/react-query";
-import { useWallet } from "@aptos-labs/wallet-adapter-react";
 
+// Import components
 import { HeroSection } from "./HeroSection";
 import { StatsSection } from "./StatsSection";
 
+// Import hooks
+import { useAccount } from "../../../hooks/useAccount";
+
 export default function AptodigiMint() {
   const queryClient = useQueryClient();
-  const { account } = useWallet();
+  const { account } = useAccount();
   React.useEffect(() => {
     queryClient.invalidateQueries();
   }, [account, queryClient]);
