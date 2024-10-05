@@ -207,7 +207,7 @@ export const Walmove = () => {
               </div>
             </div>
 
-            <div className="nav_bottom win11Scroll">
+            <div className="nav_bottom win11Scroll win11ScrollDark">
               {renderableData ? (
                 <>
                   {renderableData.map((i) => (

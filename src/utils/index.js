@@ -1,5 +1,5 @@
 import icons from "./apps";
-
+import "../index.css"
 var { taskbar, desktop, pinned, recent } = {
   taskbar:
     (localStorage.getItem("taskbar") &&
@@ -13,44 +13,23 @@ var { taskbar, desktop, pinned, recent } = {
     ],
   desktop: (localStorage.getItem("desktop") &&
     JSON.parse(localStorage.getItem("desktop"))) || [
-      // "Blue",
-      // "Unescape",
-      // "Recycle Bin",
-      // "File Explorer",
-      // "Store",
       "Browser",
-      // "Github",
-      // "Spotify",
-      // "Buy me a coffee",
+      // "Move Explorer",
       "My Collection",
       "Algorand",
       "Walmove",
       "My Wallet",
       "Aptogotchi",
       "Aptodigi",
+      "Wecastle",
+      // "Github",
+      // "X",
     ],
   pinned: (localStorage.getItem("pinned") &&
     JSON.parse(localStorage.getItem("pinned"))) || [
-      // "Browser",
-      // "Get Started",
-      // "Task Manager",
-      // "Mail",
-      // "Settings",
-      // "Store",
-      // "Unescape",
-      // "Buy me a coffee",
-      // "Notepad",
-      // "Whiteboard",
-      // "Calculator",
-      // "Spotify",
-      // "Twitter",
-      // "File Explorer",
-      // "Terminal",
       "X",
       "Github",
-      "Dorahacks",
-      // "Discord",
-      // "Camera",
+      "Move Explorer",
     ],
   recent: (localStorage.getItem("recent") &&
     JSON.parse(localStorage.getItem("recent"))) || [
