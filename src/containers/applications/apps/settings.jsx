@@ -19,7 +19,7 @@ export const Settings = () => {
   const [upmodalOpen, setUpmodalOpen] = useState(false);
 
   const themechecker = {
-    default: "light",
+    default: "dark",
     dark: "dark",
     ThemeA: "dark",
     ThemeB: "dark",

@@ -285,7 +285,7 @@ const apps = [
     icon: "github",
     type: "app",
     action: "EXTERNAL",
-    payload: "https://github.com/Weminal-labs/walnet",
+    payload: "https://github.com/Weminal-labs/walmove",
   },
   {
     name: "Unescape",
@@ -314,7 +314,7 @@ const apps = [
   //   action: "ALGORAND",
   // },
   // {
-  //   name: "Walnet",
+  //   name: "Walmove",
   //   icon: "walrus",
   //   type: "app",
   //   action: "WALNET",
@@ -332,10 +332,10 @@ const apps = [
     action: "APTOGOTCHI",
   },
   {
-    name: "Aptos Explorer",
-    icon: "aptos_explorer",
+    name: "Move Explorer",
+    icon: "move_explorer",
     type: "app",
-    action: "APTOS_EXPLORER",
+    action: "MOVE_EXPLORER",
   },
   {
     name: "My Collection",
@@ -351,25 +351,32 @@ const apps = [
     payload: "https://x.com/Walnet363756",
   },
   {
-    name: "Dorahacks",
-    icon: "dorahacks",
-    type: "app",
-    action: "EXTERNAL",
-    payload: "https://dorahacks.io/buidl/16640/",
-  },
-  {
-    name: "Aptos Names",
-    icon: "ans",
-    type: "app",
-    action: "EXTERNAL",
-    payload: "https://www.aptosnames.com/",
-  },
-  {
     name: "Aptodigi",
     icon: "aptodigi",
     type: "app",
     action: "APTODIGI",
   },
+  {
+    name: "Wecastle",
+    icon: "wecastle",
+    type: "app",
+    action: "WECASTLE",
+  },
+  // {
+  //   name: "Dorahacks",
+  //   icon: "dorahacks",
+  //   type: "app",
+  //   action: "EXTERNAL",
+  //   payload: "https://dorahacks.io/buidl/16640/",
+  // },
+  // {
+  //   name: "Aptos Names",
+  //   icon: "ans",
+  //   type: "app",
+  //   action: "EXTERNAL",
+  //   payload: "https://www.aptosnames.com/",
+  // },
+
 ];
 
 for (let i = 0; i < installed.length; i++) {

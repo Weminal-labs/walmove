@@ -62,6 +62,7 @@ const settReducer = (state = defState, action) => {
     case "STNGTHEME":
       changed = true;
       tmpState.person.theme = action.payload;
+      document.documentElement.classList.toggle('dark', action.payload === 'dark');
       break;
     case "STNGTOGG":
       changed = true;

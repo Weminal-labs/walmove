@@ -17,16 +17,16 @@ export default function AptodigiMint() {
 
   return (
     <div className="overflow-hidden">
-      <main className="flex flex-col gap-10 md:gap-16 mt-6 px-[60px]">
+      <main className="flex flex-col space-y-4 mt-6 px-12 py-6 ">
         <HeroSection />
-        <div className="h-[1px] w-full border border-black opacity-50"></div>
-        <StatsSection />
+        {/* <div className="h-[1px] w-full border border-black opacity-50"></div> */}
+
       </main>
 
       {/* <footer className="footer-container px-4 pb-6 w-full max-w-screen-xl mx-auto mt-6 md:mt-16 flex items-center justify-between">
-          <p>{data?.collection.collection_name}</p>
-          <Socials />
-        </footer> */}
+        <p>{data?.collection.collection_name}</p>
+        <Socials />
+      </footer> */}
     </div>
   );
 }
