@@ -130,6 +130,8 @@ function App() {
     dispatch({ type: "WALLBOOTED" });
   };
 
+  console.log("Account:", account);
+
   React.useEffect(() => {
     if (!window.onstart) {
       loadSettings();
