@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Aptos as _Aptos, AptosConfig, Network } from "@aptos-labs/ts-sdk";
+import { Aptos as _Aptos } from "@aptos-labs/ts-sdk";
 import "../../../utils/aptos.scss";
 
 // Import components
@@ -9,6 +9,7 @@ import NFT from "../../../components/shared/NFT";
 
 // Import hooks
 import { useAccount } from "../../../hooks/useAccount";
+import { useCopy } from "../../../hooks/useCopy";
 
 // Import utils
 import { AccountUtils } from "../../../utils/account";
@@ -22,13 +23,15 @@ import GridPattern from "../../../components/shared/animated-grid-pattern";
 import { PlusIcon } from "lucide-react";
 
 const BlurCard = ({ account, hideAddress, metadata }) => {
+  const { copied, copy } = useCopy();
+
   return (
     <div className="bg-white bg-opacity-[0.01] backdrop-filter backdrop-blur-3xl rounded-xl shadow-2xl p-6 max-w-sm mx-auto">
       <h2 className="text-xl font-semibold text-gray-200 mb-4">Main Account</h2>
       <div className="flex flex-row justify-between border-b border-gray-300 border-opacity-30 pb-2 mb-4">
         <p className="text-sm text-gray-400 font-medium">BALANCE</p>
         <p className="text-sm text-gray-400 font-medium">
-          {metadata?.balance} APT
+          {Number(metadata?.balance)} MOVE
         </p>
       </div>
       <div className="flex items-center justify-between">
@@ -36,13 +39,22 @@ const BlurCard = ({ account, hideAddress, metadata }) => {
           <img src="/img/icon/ui/google.png" alt="Google" className="w-6 h-6" />
           <div>
             <p className="text-sm font-medium text-gray-200">
-              {hideAddress(account?.address) || "0x205f...62a8"}
+              {hideAddress(account?.address) || "Empty"}
             </p>
           </div>
         </div>
-        <button className="text-blue-400 hover:text-blue-300 transition-colors">
-          <CopyIcon />
-        </button>
+        <div>
+          {copied ? (
+            <p>Copied!!</p>
+          ) : (
+            <button
+              onClick={() => copy(account?.address)}
+              className="text-blue-400 hover:text-blue-300 transition-colors"
+            >
+              <CopyIcon />
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
