@@ -44,7 +44,8 @@ export default function TaskStatus() {
           functionArguments: [taskIndex],
         },
       });
-      if (response.status === "Approved") {
+      console.log("response", response);
+      if (response[1]) {
         setShowTaskInfo(true);
         setTaskIndex(taskIndex);
         setTaskAddress(response[0]);
@@ -166,9 +167,8 @@ export default function TaskStatus() {
           </div>
         )}
 
-        <div className="text-gray-300 space-y-4 mt-10">
+        {/* <div className="text-gray-300 space-y-4 mt-10">
           <h3 className="text-xl font-semibold mb-4">Recent Tasks</h3>
-          {/* Task Status Table */}
           <div className="overflow-x-auto">
             <table className="min-w-full bg-gray-800 rounded-lg overflow-hidden">
               <thead className="bg-gray-700">
@@ -191,7 +191,7 @@ export default function TaskStatus() {
                 </tr>
               </thead>
               <tbody>
-                {/* <tr>
+                <tr>
                   <td className="px-4 py-2 whitespace-nowrap">
                     <div className="flex items-center">
                       <MdOutlineComputer className="w-4 h-4 mr-2 text-blue-400" />
@@ -221,11 +221,11 @@ export default function TaskStatus() {
                       Completed
                     </span>
                   </td>
-                </tr> */}
+                </tr>
               </tbody>
             </table>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
