@@ -3,12 +3,15 @@ import { FaUserCheck } from "react-icons/fa";
 import { MdTaskAlt } from "react-icons/md";
 import { RiNodeTree } from "react-icons/ri";
 import { GiPowerLightning } from "react-icons/gi";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Import hooks
 import { useAccount } from "../../../hooks/useAccount";
 
 // Import utils
 import { MovementDNetABI } from "./utils/abi";
+import { aptosClient } from "../../../utils/aptos_client";
 
 export default function CompleteTask() {
   const { account } = useAccount();
@@ -17,7 +20,10 @@ export default function CompleteTask() {
   const handleSubmit = async function (e) {
     e.preventDefault();
 
-    if (!account) return;
+    if (!account) {
+      toast.error("Please connect your wallet first!");
+      return;
+    }
 
     const { target } = e;
     const taskIndex = target["task_index"].value;
@@ -32,15 +38,20 @@ export default function CompleteTask() {
           functionArguments: [taskIndex, computeTime],
         },
       });
-      await aptosClient()
-        .waitForTransaction({
-          transactionHash: response.hash,
-        })
-        .then(() => {
-          // Do something when transaction is done
-        });
+      // await aptosClient()
+      //   .waitForTransaction({
+      //     transactionHash: response.hash,
+      //   })
+      //   .then(() => {
+      //     toast.success("Task completed successfully!");
+      //   });
+
+      if (response.status === "Approved") {
+        toast.success("Task submitted successfully!");
+      }
     } catch (error) {
       console.error(error);
+      toast.error("An error occurred while completing the task. Please try again!");
     } finally {
       console.log("End transaction");
     }
@@ -48,6 +59,7 @@ export default function CompleteTask() {
 
   return (
     <div className="grid grid-cols-1 gap-6 relative z-10 mt-6">
+      <ToastContainer position="top-right" autoClose={5000} theme="dark" />
       <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg p-6 rounded-lg shadow">
         <h2 className="text-2xl font-semibold mb-4 flex items-center text-white">
           <MdTaskAlt className="w-6 h-6 mr-2 text-blue-400" />

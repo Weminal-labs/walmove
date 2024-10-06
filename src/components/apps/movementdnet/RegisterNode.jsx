@@ -4,25 +4,27 @@ import { BsGpuCard } from "react-icons/bs";
 import { MdOutlineComputer } from "react-icons/md";
 import { GiReceiveMoney } from "react-icons/gi";
 import { RiSecurePaymentLine } from "react-icons/ri";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Import hooks
 import { useAccount } from "../../../hooks/useAccount";
 
 // Import utils
 import { MovementDNetABI } from "./utils/abi";
+import { aptosClient } from "../../../utils/aptos_client";
 
 export default function RegisterNode() {
-  const { account } = useAccount();
+  const { account, refreshBalance } = useAccount();
   const { signAndSubmitTransaction } = useAptosWallet();
 
   const handleSubmit = async function (e) {
     e.preventDefault();
 
-    if (!account) return;
-
-    const { target } = e;
-
-    // const signerAddress = target["signer_address"].value;
+    if (!account) {
+      toast.error("Please connect your wallet first!");
+      return;
+    }
 
     try {
       const response = await signAndSubmitTransaction({
@@ -33,16 +35,21 @@ export default function RegisterNode() {
           functionArguments: [],
         },
       });
-      await aptosClient()
-        .waitForTransaction({
-          transactionHash: response.hash,
-        })
-        .then(() => {
-          // Update balance
-          refreshBalance();
-        });
+      // await aptosClient()
+      //   .waitForTransaction({
+      //     transactionHash: response.hash,
+      //   })
+      //   .then(() => {
+      //     refreshBalance();
+      //     toast.success("GPU Node registered successfully!");
+      //   });
+      if (response.status === "Approved") {
+        refreshBalance();
+        toast.success("GPU Node registered successfully!");
+      }
     } catch (error) {
       console.error(error);
+      toast.error("An error occurred while registering the GPU Node. Please try again!");
     } finally {
       console.log("End transaction");
     }
@@ -50,6 +57,7 @@ export default function RegisterNode() {
 
   return (
     <div className="grid grid-cols-1 gap-6 relative z-10 mt-6 overflow-y-auto">
+      <ToastContainer position="top-right" autoClose={5000} theme="dark" />
       <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg p-6 rounded-lg shadow">
         <h2 className="text-2xl font-semibold mb-4 flex items-center text-white">
           <BsGpuCard className="w-6 h-6 mr-2 text-blue-400" />

@@ -15,13 +15,14 @@ import {
   TabsList,
   TabsTrigger,
 } from "../../../components/shared/tab-set";
+import { Boxes } from "../../../components/shared/background-boxes";
 
 export const MovementDNet = () => {
   const wnapp = useSelector((state) => state.apps.movementdnet);
 
   return (
     <div
-      className="msfiles floatTab dpShad bg-gradient-to-r from-[#1D2235] to-[#121318]"
+      className="relative msfiles floatTab dpShad bg-gradient-to-r from-[#1D2235] to-[#121318] overflow-hidden"
       data-size={wnapp.size}
       data-max={wnapp.max}
       style={{
@@ -31,6 +32,7 @@ export const MovementDNet = () => {
       data-hide={wnapp.hide}
       id={wnapp.icon + "App"}
     >
+      <Boxes />
       <ToolBar
         app={wnapp.action}
         icon={wnapp.icon}

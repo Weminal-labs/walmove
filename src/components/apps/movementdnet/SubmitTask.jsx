@@ -5,15 +5,18 @@ import {
   FaCoins,
   FaInfoCircle,
 } from "react-icons/fa";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Import components
-import { toast } from "../../shared/use-toast";
+// import { toast } from "../../shared/use-toast";
 
 // Import hooks
 import { useAccount } from "../../../hooks/useAccount";
 
 // Import utils
 import { MovementDNetABI } from "./utils/abi";
+import { aptosClient } from "../../../utils/aptos_client";
 
 export default function SubmitTask() {
   const { account, metadata, refreshBalance } = useAccount();
@@ -22,7 +25,10 @@ export default function SubmitTask() {
   const handleSubmit = async function (e) {
     e.preventDefault();
 
-    if (!account) return;
+    if (!account) {
+      toast.error("Please connect your wallet first!");
+      return;
+    }
 
     const { target } = e;
     const taskType = target["task_type"].value;
@@ -30,10 +36,8 @@ export default function SubmitTask() {
     const reward = target["reward"].value;
 
     if (reward >= metadata.balance) {
-      toast({
-        title: "Transaction Error",
-        description: "Insufficient fund",
-      });
+      toast.error("Insufficient balance!");
+      return;
     }
 
     try {
@@ -45,23 +49,22 @@ export default function SubmitTask() {
           functionArguments: [taskType, computeUnits, reward],
         },
       });
-      await aptosClient()
-        .waitForTransaction({
-          transactionHash: response.hash,
-        })
-        .then(() => {
-          // Update balance
-          refreshBalance();
-        });
+      console.log("response signAndSubmitTransaction", response);
+
+      if (response.status === "Approved") {
+        refreshBalance();
+        toast.success("Task submitted successfully!");
+      }
+
     } catch (error) {
       console.error(error);
-    } finally {
-      console.log("End transaction");
+      toast.error("An error occurred while submitting the task. Please try again!");
     }
   };
 
   return (
     <div className="grid grid-cols-1 gap-6 relative z-10 mt-6 overflow-y-auto">
+      <ToastContainer position="top-right" autoClose={5000} theme="dark" />
       <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg p-6 rounded-lg shadow">
         <h2 className="text-2xl font-semibold mb-4 flex items-center text-white">
           <FaCloudUploadAlt className="mr-2 text-blue-400" /> Submit New Task

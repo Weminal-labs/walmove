@@ -6,6 +6,8 @@ import { GiPowerLightning } from "react-icons/gi";
 import { FaCoins } from "react-icons/fa";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Import hooks
 import { useAccount } from "../../../hooks/useAccount";
@@ -26,7 +28,10 @@ export default function TaskStatus() {
   const handleSubmit = async function (e) {
     e.preventDefault();
 
-    if (!account) return;
+    if (!account) {
+      toast.error("Please connect your wallet first!");
+      return;
+    }
 
     const { target } = e;
     const taskIndex = target["task_index"].value;
@@ -39,23 +44,30 @@ export default function TaskStatus() {
           functionArguments: [taskIndex],
         },
       });
-      setShowTaskInfo(true);
-      setTaskIndex(taskIndex);
-      setTaskAddress(response[0]);
+      if (response.status === "Approved") {
+        setShowTaskInfo(true);
+        setTaskIndex(taskIndex);
+        setTaskAddress(response[0]);
+        toast.success("Task information retrieved successfully!");
+      }
+
     } catch (error) {
       console.error(error);
+      toast.error("Failed to retrieve task information. Please try again.");
     } finally {
       console.log("End transaction");
     }
   };
 
   const handleQueryTask = () => {
-    // Giả lập việc query thông tin task
+    // Simulate querying task information
     setShowTaskInfo(true);
+    toast.info("Simulated task query completed.");
   };
 
   return (
     <div className="grid grid-cols-1 gap-6 relative z-10 mt-6">
+      <ToastContainer position="top-right" autoClose={5000} theme="dark" />
       <div className="bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg p-6 rounded-lg shadow">
         <h2 className="text-2xl font-semibold mb-4 flex items-center text-white">
           <MdSearch className="w-6 h-6 mr-2 text-blue-400" />
@@ -85,7 +97,6 @@ export default function TaskStatus() {
               type="text"
               className="w-full p-2 border rounded bg-gray-700 border-gray-600 text-white focus:ring-2 focus:ring-blue-400 focus:border-transparent"
               placeholder="Enter task index"
-              value={taskIndex}
             />
           </div>
 
@@ -157,10 +168,8 @@ export default function TaskStatus() {
             </div>
           </div>
         )}
-
-        <div className="text-gray-300 space-y-4 mt-10">
+        {/* <div className="text-gray-300 space-y-4 mt-10">
           <h3 className="text-xl font-semibold mb-4">Recent Tasks</h3>
-          {/* Task Status Table */}
           <div className="overflow-x-auto">
             <table className="min-w-full bg-gray-800 rounded-lg overflow-hidden">
               <thead className="bg-gray-700">
@@ -183,7 +192,7 @@ export default function TaskStatus() {
                 </tr>
               </thead>
               <tbody>
-                {/* <tr>
+                <tr>
                   <td className="px-4 py-2 whitespace-nowrap">
                     <div className="flex items-center">
                       <MdOutlineComputer className="w-4 h-4 mr-2 text-blue-400" />
@@ -213,11 +222,11 @@ export default function TaskStatus() {
                       Completed
                     </span>
                   </td>
-                </tr> */}
+                </tr>
               </tbody>
             </table>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
