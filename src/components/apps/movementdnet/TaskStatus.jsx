@@ -44,30 +44,28 @@ export default function TaskStatus() {
           functionArguments: [taskIndex],
         },
       });
-      if (response.status === "Approved") {
+      console.log("response", response);
+      if (response[1]) {
         setShowTaskInfo(true);
         setTaskIndex(taskIndex);
         setTaskAddress(response[0]);
-        toast.success("Task information retrieved successfully!");
+        toast.success("Task queried successfully!");
       }
-
     } catch (error) {
+      toast.error("An error occurred while query the task. Please try again!");
       console.error(error);
-      toast.error("Failed to retrieve task information. Please try again.");
     } finally {
       console.log("End transaction");
     }
   };
 
   const handleQueryTask = () => {
-    // Simulate querying task information
+    // Giả lập việc query thông tin task
     setShowTaskInfo(true);
-    toast.info("Simulated task query completed.");
   };
 
   return (
     <div className="grid grid-cols-1 gap-6 relative z-10 mt-6">
-      <ToastContainer position="top-right" autoClose={5000} theme="dark" />
       <div className="bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg p-6 rounded-lg shadow">
         <h2 className="text-2xl font-semibold mb-4 flex items-center text-white">
           <MdSearch className="w-6 h-6 mr-2 text-blue-400" />
@@ -168,6 +166,7 @@ export default function TaskStatus() {
             </div>
           </div>
         )}
+
         {/* <div className="text-gray-300 space-y-4 mt-10">
           <h3 className="text-xl font-semibold mb-4">Recent Tasks</h3>
           <div className="overflow-x-auto">
