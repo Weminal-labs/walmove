@@ -27,6 +27,7 @@ export * from "./apps/collection";
 export * from "./apps/aptodigi";
 export * from "./apps/wecastle";
 export * from "./apps/socialmove";
+export * from "./apps/movementdnet";
 
 export const ScreenPreview = () => {
   const tasks = useSelector((state) => state.taskbar);

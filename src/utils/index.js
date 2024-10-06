@@ -23,6 +23,7 @@ var { taskbar, desktop, pinned, recent } = {
     "Aptodigi",
     "Wecastle",
     "Social Move",
+    "MovementDNet",
     // "Github",
     // "X",
   ],
