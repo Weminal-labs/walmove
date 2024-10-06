@@ -368,6 +368,12 @@ const apps = [
     type: "app",
     action: "SOCIALMOVE",
   },
+  {
+    name: "MovementDNet",
+    icon: "movementdnet",
+    type: "app",
+    action: "MOVEMENTDNET",
+  },
   // {
   //   name: "Dorahacks",
   //   icon: "dorahacks",
